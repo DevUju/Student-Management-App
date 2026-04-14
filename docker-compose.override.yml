@@ -1,0 +1,17 @@
+services:
+  api:
+    build:
+      target: builder   # use Stage 1 (dev dependencies available)
+
+    command: npm run start:dev
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    env_file:
+      - .env.docker
+
+    ports:
+      - "3000:3000"
+      - "9229:9229"
